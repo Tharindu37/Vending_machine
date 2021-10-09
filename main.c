@@ -20,3 +20,4 @@ void printItem(char itemArray[20][20],int numberOfItem[20]){
     printf("<>Select the Item You Want? :");
     scanf("%d",&chooseItem);
 }
+
