@@ -2,9 +2,11 @@
 #include <stdlib.h>
 int printItem(char itemArray[20][20],int numberOfItem[20]);
 int printSettings();
+int printSettings2(settingsArray2[3][10]);
 int arraySize=5;
 int main(){
     char itemArray[20][20]={"Water Bottles","Coca cola","Soda","Sprite","Pepsi"};//item array
+    char settingsArray2[3][10]={"Change","Back","Exit"};
     int numberOfOneItem[20]={5,10,0,10,2};//number of one item array
     float priceOfOneItem[20]={100,70,150,80,90};//price of one item array
     int chooseItem=printItem(itemArray,numberOfOneItem);//call print item function
@@ -13,7 +15,7 @@ int main(){
         system("CLS");
         chooseSettings=printSettings();
     }else{
-
+        ///////////////////////
     }
     return 0;
 }
@@ -40,5 +42,13 @@ int printSettings(){
     scanf("%d",&chooseSettings);
     return chooseSettings;
 }
-
+//Settings2
+int printSettings2(settingsArray2[3][10]){
+    int chooseSettings2=0;
+    for(int i=0;i<3;i++){
+        printf("%d. %s\n",i+1,settingsArray2[i]);
+    }
+    printf("<>Choose :");
+    scanf("%d",&chooseSettings2);
+}
 
