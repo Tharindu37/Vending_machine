@@ -122,6 +122,7 @@ int printItem(char itemArray[20][20],int numberOfItem[20]){
             printf("%d. %s\n",i+1,itemArray[i]);
         }
     }
+    printf("<<Edit System Settings For Enter -1>>\n");
     printf("<>Select the Item You Want? :");
     scanf("%d",&chooseItem);
     return chooseItem;
