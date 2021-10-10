@@ -3,7 +3,8 @@
 int printItem(char itemArray[20][20],int numberOfItem[20]);
 int printSettings();
 int printSettings2(char settingsArray2[3][10]);
-void addMoreItems(int chooseSettings2);
+void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]);
+void itemNameSet(char itemArray[20][20],int i);
 int arraySize=5;
 int main(){
     char itemArray[20][20]={"Water Bottles","Coca cola","Soda","Sprite","Pepsi"};//item array
@@ -15,6 +16,7 @@ int main(){
     int chooseSettings=0;
     int chooseSettings2=0;
     //Item Choose
+    settings:
     if(chooseItem==-1){
         system("CLS");
         chooseSettings=printSettings();
@@ -28,13 +30,18 @@ int main(){
         chooseSettings2=printSettings2(settingsArray2);
         switch(chooseSettings2){
         case 1:
-            //AddItems();
-            break;
+            addMoreItems(itemArray,numberOfOneItem,priceOfOneItem);
+            system("CLS");
+            chooseItem=printItem(itemArray,numberOfOneItem);
+            goto settings;
         case 2:
-            printSettings();
-            break;
+            system("CLS");
+            chooseSettings=printSettings();
+            goto settings;
         case 3:
-            //
+            system("CLS");
+            chooseItem=printItem(itemArray,numberOfOneItem);
+            goto settings;
         default:
             break;
             //
@@ -78,7 +85,7 @@ int printSettings(){
     scanf("%d",&chooseSettings);
     return chooseSettings;
 }
-//Settings2
+//Settings 2
 int printSettings2(char settingsArray2[3][10]){
     int chooseSettings2=0;
     for(int i=0;i<3;i++){
@@ -86,9 +93,20 @@ int printSettings2(char settingsArray2[3][10]){
     }
     printf("<>Choose :");
     scanf("%d",&chooseSettings2);
+    return chooseSettings2;
 }
-//Settings--->Settings2--->if inputs
-void addMoreItems(int chooseSettings2){
+//Settings--->Settings 2--->if input 1
+void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]){
+    int noOfItems=0;
+    printf("Enter Number Of Items :");
+    scanf("%d",&noOfItems);
+    for(int i=0;i<noOfItems;i++){
+        printf("Enter Item %d Name :",i+1);
+        scanf("%s",&itemArray[arraySize]);
+        printf("Enter Item %d Price And Count(Ex:70.00,5) :",i+1);
+        scanf("%f,%d",&priceOfOneItem[arraySize],&numberOfOneItem[arraySize]);
+        arraySize++;
+    }
+}
 
-}
 
