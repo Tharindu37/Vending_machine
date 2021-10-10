@@ -5,6 +5,11 @@ int printSettings();
 int printSettings2(char settingsArray2[3][10]);
 void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]);
 void itemNameSet(char itemArray[20][20],int i);
+void changePrice(char itemArray[20][20],char priceOfOneItem[20]);
+void printItemCountBill(char itemArray[20][20],int numberOfOneItem[20]);
+void printProfit();
+void addItemCount(char itemArray[20][20],int numberOfOneItem[20]);
+int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]);
 int arraySize=5;
 int main(){
     char itemArray[20][20]={"Water Bottles","Coca cola","Soda","Sprite","Pepsi"};//item array
@@ -32,6 +37,7 @@ int main(){
         case 1:
             addMoreItems(itemArray,numberOfOneItem,priceOfOneItem);
             system("CLS");
+            //PrintMoreItemBill();
             chooseItem=printItem(itemArray,numberOfOneItem);
             goto settings;
         case 2:
@@ -43,22 +49,68 @@ int main(){
             chooseItem=printItem(itemArray,numberOfOneItem);
             goto settings;
         default:
-            break;
-            //
+            chooseItem=defaultOutPut(itemArray,numberOfOneItem);
+            goto settings;
         }
         break;
     case 2:
+        system("CLS");
+        chooseSettings2=printSettings2(settingsArray2);
+        switch(chooseSettings2){
+        case 1:
+            //addMoreItems(itemArray,numberOfOneItem,priceOfOneItem);
+            system("CLS");
+            //PrintMoreItemBill();
+            chooseItem=printItem(itemArray,numberOfOneItem);
+            goto settings;
+        case 2:
+            system("CLS");
+            chooseSettings=printSettings();
+            goto settings;
+        case 3:
+            system("CLS");
+            chooseItem=printItem(itemArray,numberOfOneItem);
+            goto settings;
+        default:
+            chooseItem=defaultOutPut(itemArray,numberOfOneItem);
+            goto settings;
+        }
         break;
     case 3:
         break;
     case 4:
         break;
     case 5:
+        system("CLS");
+        chooseSettings2=printSettings2(settingsArray2);
+        switch(chooseSettings2){
+        case 1:
+            //addMoreItems(itemArray,numberOfOneItem,priceOfOneItem);
+            system("CLS");
+            //PrintMoreItemBill();
+            chooseItem=printItem(itemArray,numberOfOneItem);
+            goto settings;
+        case 2:
+            system("CLS");
+            chooseSettings=printSettings();
+            goto settings;
+        case 3:
+            system("CLS");
+            chooseItem=printItem(itemArray,numberOfOneItem);
+            goto settings;
+        default:
+            chooseItem=defaultOutPut(itemArray,numberOfOneItem);
+            goto settings;
+        }
         break;
     case 6:
-        break;
+        //Settings--->if input 6--->Settings 2--->if input 1
+        system("CLS");
+        chooseItem=printItem(itemArray,numberOfOneItem);
+        goto settings;
     default:
-        break;
+        chooseItem=defaultOutPut(itemArray,numberOfOneItem);
+        goto settings;
     }
     return 0;
 }
@@ -74,7 +126,7 @@ int printItem(char itemArray[20][20],int numberOfItem[20]){
     scanf("%d",&chooseItem);
     return chooseItem;
 }
-//--->if Input -1(Settings)
+//Settings--->if Input -1
 int printSettings(){
     int chooseSettings=0;
     char settingsArray[6][50]={"Add More Items","Change The Price","The Number Of Items Available","Looking At The Profit","Increasing The Number Of Items","Exit"};
@@ -95,7 +147,7 @@ int printSettings2(char settingsArray2[3][10]){
     scanf("%d",&chooseSettings2);
     return chooseSettings2;
 }
-//Settings--->Settings 2--->if input 1
+//Settings--->if input 1--->Settings 2--->if input 1
 void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]){
     int noOfItems=0;
     printf("Enter Number Of Items :");
@@ -108,5 +160,28 @@ void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOn
         arraySize++;
     }
 }
+//Settings--->if input 2--->Settings 2--->if input 1
+void changePrice(char itemArray[20][20],char priceOfOneItem[20]){
 
+}
+//Settings--->if input 3--->Settings 2--->if input 1
+void printItemCountBill(char itemArray[20][20],int numberOfOneItem[20]){
 
+}
+//Settings--->if input 4--->Settings 2--->if input 1
+void printProfit(){
+
+}
+//Settings--->if input 5--->Settings 2--->if input 1
+void addItemCount(char itemArray[20][20],int numberOfOneItem[20]){
+
+}
+//default output
+int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]){
+    system("CLS");
+    printf("Invalid Input..! <--Please Click Any Key-->");
+    getch();
+    system("CLS");
+    int chooseItem=printItem(itemArray,numberOfOneItem);
+    return chooseItem;
+}
