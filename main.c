@@ -10,12 +10,14 @@ void printProfit();
 void addItemCount(char itemArray[20][20],int numberOfOneItem[20]);
 int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]);
 void printItemTable(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]);
+void buyItem(int priceOfOneItem[],int buyItemQty[]);
 int arraySize=5;
 int main(){
     char itemArray[20][20]={"Water_Bottles","Coca_cola","Soda","Sprite","Pepsi"};//item array
     char settingsArray2[3][10]={"Change","Back","Exit"};
     int numberOfOneItem[20]={5,10,0,10,2};//number of one item array
     float priceOfOneItem[20]={100,70,150,80,90};//price of one item array
+    int buyItemQty[20]={0,0,0,0,0};
     int chooseItem=printItem(itemArray,numberOfOneItem);//call print item function
 
     int chooseSettings=0;
@@ -26,7 +28,7 @@ int main(){
         system("CLS");
         chooseSettings=printSettings();
     }else{
-        ///////////////////////
+        buyItem(priceOfOneItem,buyItemQty);
     }
     //Settings Choose
     switch(chooseSettings){
@@ -138,7 +140,8 @@ int printSettings(){
     for(int i=0;i<6;i++){
         printf("\t%d. %s\n",i+1,settingsArray[i]);
     }
-    printf("\t\t<>Choose :");
+    //printf("%s",settingsArray[0])
+    printf("<>Choose :");
     scanf("%d",&chooseSettings);
     return chooseSettings;
 }
@@ -148,7 +151,7 @@ int printSettings2(char settingsArray2[3][10]){
     for(int i=0;i<3;i++){
         printf("\t%d. %s\n",i+1,settingsArray2[i]);
     }
-    printf("\t\t<>Choose :");
+    printf("<>Choose :");
     scanf("%d",&chooseSettings2);
     return chooseSettings2;
 }
@@ -209,6 +212,10 @@ int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]){
     system("CLS");
     int chooseItem=printItem(itemArray,numberOfOneItem);
     return chooseItem;
+}
+//buy items
+void buyItem(int priceOfOneItem[],int buyItemQty[]){
+
 }
 
 
