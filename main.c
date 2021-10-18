@@ -6,15 +6,18 @@ int printSettings2(char settingsArray2[3][10]);
 void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]);
 void itemNameSet(char itemArray[20][20],int i);
 void changePrice(char itemArray[20][20],float priceOfOneItem[20]);
-void printProfit();
+void printProfit(char itemArray[20][20],float buyItemTotalPrice[20]);
 void addItemCount(char itemArray[20][20],int numberOfOneItem[20]);
 int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]);
 void printItemTable(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]);
 void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem,int numberOfOneItem[20],char itemArray[20][20]);
 float calculateDiscount(float priceOfOneItem[20],int chooseItemIndex);
-void printBill(float priceOfOneItem[20],int chooseItemIndex,float discont,char itemArray[20][20],char paymentMehtod[2][20],int intPaymentMethod,float sellPrice);
+void printBill(float priceOfOneItem[20],int chooseItemIndex,float discont,char itemArray[20][20],char paymentMehtod[2][20],int intPaymentMethod,float sellPrice,float enterMoney);
+void createBuyitemFile();
+void writeTheFile(char itemAraay[20][20],float priceOfOneItem[20],int chooseItemIndex,float discont,float sellPrice);
 int arraySize=5;
 int main(){
+    createBuyitemFile();
     char itemArray[20][20]={"Water_Bottles","Coca_cola","Soda","Sprite","Pepsi"};//item array
     char settingsArray2[3][10]={"Change","Back","Exit"};
     int numberOfOneItem[20]={5,10,0,10,2};//number of one item array
@@ -32,7 +35,7 @@ int main(){
     }else{
         system("cls");
         buyItem(priceOfOneItem,buyItemTotalPrice,chooseItem,numberOfOneItem,itemArray);
-        printf("Wall Come! Come Agean!<<Please Press Any Key>>");
+        printf("Come Agean!<<Please Press Any Key>>");
         getch();
         system("cls");
         chooseItem=printItem(itemArray,numberOfOneItem);
@@ -91,7 +94,7 @@ int main(){
         chooseSettings=printSettings();
         goto settings;
     case 4:
-        //
+        printProfit(itemArray,buyItemTotalPrice);
         chooseSettings=printSettings();
         goto settings;
     case 5:
@@ -200,8 +203,16 @@ void printItemTable(char itemArray[20][20],int numberOfOneItem[20],float priceOf
     system("CLS");
 }
 //Settings--->if input 4--->Settings 2--->if input 1
-void printProfit(){
+void printProfit(char itemArray[20][20],float buyItemTotalPrice[20]){
+    system("cls");
+    printf("Item Name\tTotal amount of sales\n");
+    for(int i=0;i<arraySize;i++){
+        printf("%-10s\t%0.2f\n",itemArray[i],buyItemTotalPrice[i]);
+    }
 
+    printf("For Go Settings <--Please Click Any Key-->");
+    getch();
+    system("CLS");
 }
 //Settings--->if input 5--->Settings 2--->if input 1
 void addItemCount(char itemArray[20][20],int numberOfOneItem[20]){
@@ -227,6 +238,7 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
     int discont;
     int chooseItemIndex=chooseItem-1;
     int sellPrice;
+    float enterMoney;
     char paymentMehtod[2][20]={"Card Payment","cash Payment"};
 
     for(int i=0;i<2;i++){
@@ -241,27 +253,48 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
         discont=0;
     }
 
-    sellPrice=priceOfOneItem[chooseItemIndex]-discont;
-    numberOfOneItem[chooseItemIndex]-=1;
-    buyItemTotalPrice[chooseItemIndex]+=sellPrice;
-    printBill(priceOfOneItem,chooseItemIndex,discont,itemArray,paymentMehtod,intPaymentMethod,sellPrice);
+    system("cls");
+    printf("Enter Card Or Money :");
+    scanf("%f",&enterMoney);
+    if(enterMoney>=priceOfOneItem[chooseItemIndex]){
+        sellPrice=priceOfOneItem[chooseItemIndex]-discont;
+        numberOfOneItem[chooseItemIndex]-=1;
+        buyItemTotalPrice[chooseItemIndex]+=sellPrice;
+
+        printBill(priceOfOneItem,chooseItemIndex,discont,itemArray,paymentMehtod,intPaymentMethod,sellPrice,enterMoney);
+    }else{
+        system("cls");
+        printf("Try agaen!\n");
+    }
 }
 //calculate discont
 float calculateDiscount(float priceOfOneItem[20],int chooseItemIndex){
     return priceOfOneItem[chooseItemIndex]*(0.1);
 }
 //print Main bill
-void printBill(float priceOfOneItem[20],int chooseItemIndex,float discont,char itemArray[20][20],char paymentMehtod[2][20],int intPaymentMethod,float sellPrice){
-    float enterMoney;
+void printBill(float priceOfOneItem[20],int chooseItemIndex,float discont,char itemArray[20][20],char paymentMehtod[2][20],int intPaymentMethod,float sellPrice,float enterMoney){
     system("cls");
-    printf("Enter Card Or Money :");
-    scanf("%f",&enterMoney);
     printf("Item Name :%s\n",itemArray[chooseItemIndex]);
     printf("Payment Method :%s\n",paymentMehtod[intPaymentMethod-1]);
     printf("Item Price : %0.2f\n",priceOfOneItem[chooseItemIndex]);
     printf("For card payment :Discount : 10%\nFor Cash payment : Discount : 0%\n");
     printf("Discount : %0.2f\n",discont);
     printf("Total Price : %0.2f\n",sellPrice);
+    printf("You Pay Price %f\n",enterMoney);
     printf("Balance : %0.2f\n",enterMoney-sellPrice);
+    writeTheFile(itemArray,priceOfOneItem,chooseItemIndex,discont,sellPrice);
+}
+void createBuyitemFile(){
+    FILE *filePointer;
+    filePointer=fopen("Buy_Item_List.txt","w");
+    //write
+    fprintf(filePointer,"Item Name\tQTY\tItem Price\tDiscount\tSell_Price");
+    fclose(filePointer);
+}
+void writeTheFile(char itemAraay[20][20],float priceOfOneItem[20],int chooseItemIndex,float discont,float sellPrice){
+    FILE *filePointer;
+    filePointer=fopen("Buy_Item_List.txt","a");
+    fprintf(filePointer,"\n%-15s\t1\t%0.2f\t\t%0.2f\t\t%0.2f",itemAraay[chooseItemIndex],priceOfOneItem[chooseItemIndex],discont,sellPrice);
+    fclose(filePointer);
 }
 
