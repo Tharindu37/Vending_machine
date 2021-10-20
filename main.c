@@ -60,9 +60,10 @@ int main(){
         system("cls");
         if(arraySize>=chooseItem && chooseItem>0){
             buyItem(priceOfOneItem,buyItemTotalPrice,chooseItem,numberOfOneItem,itemArray);
-            printf("Come Agean!<<Please Press Any Key>>");
+            printf("\t\t<<Please Press Any Key>>");
         }else{
-            printf("Invalid Input!<<Please Press Any Key>>");
+            chooseItem=defaultOutPut(itemArray,numberOfOneItem);
+            goto settings;
         }
         getch();
         system("cls");
@@ -187,7 +188,7 @@ int printItem(char itemArray[20][20],int numberOfItem[20]){
     printf("\t-------------------------------------------\n");
     printf("\t<<<<<Edit System Settings For Enter -1>>>>>\n");
     printf("\t-------------------------------------------\n\n");
-    printf("\t\t<>Select the Item You Want? :");
+    printf("\t<>Select the Item You Want? :");
     scanf("%d",&chooseItem);
     return chooseItem;
 }
@@ -342,9 +343,9 @@ void addItemCount(char itemArray[20][20],int numberOfOneItem[20]){
 //default output
 int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]){
     system("CLS");
-    printf("\t\t--------------------------------------------\n");
-    printf("\t\t|Invalid Input..! <--Please Click Any Key-->|");
-    printf("\t\t--------------------------------------------\n");
+    printf("\t\t---------------------------------------------\n");
+    printf("\t\t|Invalid Input..! <--Please Click Any Key-->|\n");
+    printf("\t\t---------------------------------------------\n");
     getch();
     system("CLS");
     int chooseItem=printItem(itemArray,numberOfOneItem);
@@ -384,8 +385,11 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
     printf("\t\t==========================\n");
     printf("\t\t==========================\n\n");
     printf("\t\tEnter Card Or Money :");
-    printf("\t\t==========================\n\n");
     scanf("%f",&enterMoney);
+    printf("\n\t\t==========================\n");
+    printf("\t\tOK..!,<--Please Click Any Key-->\n");
+    getch();
+
     if(enterMoney>=priceOfOneItem[chooseItemIndex]){
         sellPrice=priceOfOneItem[chooseItemIndex]-discont;
         numberOfOneItem[chooseItemIndex]-=1;
