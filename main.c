@@ -366,7 +366,7 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
     printf("\t\t===================\n");
     printf("\t\t===================\n\n");
     for(int i=0;i<2;i++){
-        printf("\t%d. %s\n",i+1,paymentMehtod[i]);
+        printf("\t\t%d. %s\n",i+1,paymentMehtod[i]);
     }
     printf("\n\t\t===================\n\n");
     printf("\t\tChoose Payment Method :");
