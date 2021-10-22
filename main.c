@@ -172,6 +172,13 @@ int main(){
 //Printing the item list and receiving the input provided by the customer or seller.
 int printItem(char itemArray[20][20],int numberOfItem[20]){
     int chooseItem=0;
+    printf("\t\t-------====------====-------\n");
+    printf("\t\t|     VENDING MACHINE      |\n");
+    printf("\t\t-------====------====-------\n");
+    printf("\t||||||||||||||||||||||||||||||||||||||||||||\n");
+    printf("\t|                  WELCOME                 |\n");
+    printf("\t||||||||||||||||||||||||||||||||||||||||||||\n");
+    printf("\t<<<<<<<<<Discount For Card Payment!>>>>>>>>>\n");
     printf("\t\t============================\n");
     printf("\t\t|           ITEM           |\n");
     printf("\t\t============================\n");
@@ -199,6 +206,9 @@ int printSettings(){
     int chooseSettings=0;
     char settingsArray[6][50]={"Add More Items","Change The Price","Item Table","The Profit",
     "Increasing The Number Of Items","Exit"};
+    printf("\t\t-------====-----------====-------\n");
+    printf("\t\t|        VENDING MACHINE        |\n");
+    printf("\t\t-------====-----------====-------\n\n");
     printf("\t\t=================================\n");
     printf("\t\t|             SETTINGS          |\n");
     printf("\t\t=================================\n");
@@ -217,6 +227,9 @@ int printSettings(){
 //Printing the Settings 2 list and receiving the input provided by the seller
 int printSettings2(char settingsArray2[3][10]){
     int chooseSettings2=0;
+    printf("\t\t-------====------====-------\n");
+    printf("\t\t|     VENDING MACHINE      |\n");
+    printf("\t\t-------====------====-------\n\n");
     printf("\t\t============================\n");
     printf("\t\t|      MORE SETTINGS       |\n");
     printf("\t\t============================\n");
@@ -235,6 +248,9 @@ int printSettings2(char settingsArray2[3][10]){
 //Adding new items
 void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]){
     int noOfItems=0;
+    printf("\t\t-------====----====-------\n");
+    printf("\t\t|    VENDING MACHINE     |\n");
+    printf("\t\t-------====----====-------\n\n");
     printf("\t\t==========================\n");
     printf("\t\t     NUMBER OF ITEMS      \n");
     printf("\t\t==========================\n");
@@ -245,6 +261,9 @@ void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOn
     printf("\t\tOK..!,<--Please Click Any Key-->\n");
     getch();
     system("cls");
+    printf("\t\t-------====--------------====-------\n");
+    printf("\t\t|          VENDING MACHINE         |\n");
+    printf("\t\t-------====--------------====-------\n\n");
     printf("\t\t====================================\n");
     printf("\t\t              ADD ITEM              \n");
     printf("\t\t====================================\n");
@@ -262,7 +281,10 @@ void addMoreItems(char itemArray[20][20],int numberOfOneItem[20],float priceOfOn
         arraySize++;
     }
     printf("\t\t====================================\n");
-    printf("\t\tOK..!,<--Please Click Any Key-->\n");
+    printf("\t\t------------------------------------\n");
+    printf("\t\t|    OK..! For goto Item Table.    |\n");
+    printf("\t\t|    <--Please Click Any Key-->    |\n");
+    printf("\t\t------------------------------------\n");
     getch();
 }
 
@@ -277,7 +299,13 @@ void fixFget(char s[]){
 //Settings--->if input 2--->Settings 2--->if input 1
 //Change the price of available items.
 void changePrice(char itemArray[20][20],float priceOfOneItem[20]){
-    printf("\t<<If Not Change,Enter -1>>\n");
+    printf("\t\t-------====--------------====-------\n");
+    printf("\t\t|          VENDING MACHINE         |\n");
+    printf("\t\t-------====--------------====-------\n\n");
+    printf("\t\t====================================\n");
+    printf("\t\t             Change Price           \n");
+    printf("\t\t====================================\n");
+    printf("\t\t<<If Not Change,Enter -1>>\n");
     for(int i=0;i<arraySize;i++){
         float temp=0;
         printf("\t\tEnter New Price For %s :",itemArray[i]);
@@ -286,12 +314,21 @@ void changePrice(char itemArray[20][20],float priceOfOneItem[20]){
             priceOfOneItem[i]=temp;
         }
     }
+    printf("\t\t====================================\n");
+    printf("\t\t------------------------------------\n");
+    printf("\t\t|    OK..! For goto Item Table.    |\n");
+    printf("\t\t|    <--Please Click Any Key-->    |\n");
+    printf("\t\t------------------------------------\n");
+    getch();
 }
 
 //Settings--->if input 3--->Settings 2--->if input 1
 //Check the number of items available
 void printItemTable(char itemArray[20][20],int numberOfOneItem[20],float priceOfOneItem[20]){
     system("CLS");
+    printf("\t\t-------====------------------------------------====-------\n");
+    printf("\t\t|                     VENDING MACHINE                    |\n");
+    printf("\t\t-------====------------------------------------====-------\n\n");
     printf("\t\t==========================================================\n");
     printf("\t\t|               The Number Of Item Available             |\n");
     printf("\t\t==========================================================\n");
@@ -300,7 +337,10 @@ void printItemTable(char itemArray[20][20],int numberOfOneItem[20],float priceOf
         printf("\t\t|%-20s%-20dRs. %-12.2f|\n",itemArray[i],numberOfOneItem[i],priceOfOneItem[i]);
     }
     printf("\t\t==========================================================\n");
-    printf("\t\tFor Go Settings <--Please Click Any Key-->");
+    printf("\t\t----------------------------------------------------------\n");
+    printf("\t\t|                OK..! For goto Settings                 |\n");
+    printf("\t\t|              <--Please Click Any Key-->                |\n");
+    printf("\t\t----------------------------------------------------------\n");
     getch();
     system("CLS");
 }
@@ -309,15 +349,21 @@ void printItemTable(char itemArray[20][20],int numberOfOneItem[20],float priceOf
 //Take care of the total amount collected by selling one item.
 void printProfit(char itemArray[20][20],float buyItemTotalPrice[20]){
     system("cls");
+    printf("\t\t-------====----------------====-------\n");
+    printf("\t\t|          VENDING MACHINE           |\n");
+    printf("\t\t-------====----------------====-------\n\n");
     printf("\t\t======================================\n");
     printf("\t\t|              Profit                |\n");
     printf("\t\t======================================\n");
     printf("\t\t|Item Name\tTotal amount of sales|\n");
     for(int i=0;i<arraySize;i++){
-        printf("\t|%-10s\tRs. %-17.2f|\n",itemArray[i],buyItemTotalPrice[i]);
+        printf("\t\t|%-10s\tRs. %-17.2f|\n",itemArray[i],buyItemTotalPrice[i]);
     }
     printf("\t\t======================================\n");
-    printf("\t\tFor Go Settings <--Please Click Any Key-->");
+    printf("\t\t--------------------------------------\n");
+    printf("\t\t|      OK..! For goto Settings       |\n");
+    printf("\t\t|    <--Please Click Any Key-->      |\n");
+    printf("\t\t--------------------------------------\n");
     getch();
     system("CLS");
 }
@@ -325,6 +371,9 @@ void printProfit(char itemArray[20][20],float buyItemTotalPrice[20]){
 //Settings--->if input 5--->Settings 2--->if input 1
 //Increase the number of available items.
 void addItemCount(char itemArray[20][20],int numberOfOneItem[20]){
+    printf("\t\t-------====---------------====-------\n");
+    printf("\t\t|          VENDING MACHINE          |\n");
+    printf("\t\t-------====---------------====-------\n\n");
     printf("\t\t=====================================\n");
     printf("\t\t|           INCREASE ITEM           |\n");
     printf("\t\t=====================================\n");
@@ -336,15 +385,22 @@ void addItemCount(char itemArray[20][20],int numberOfOneItem[20]){
         numberOfOneItem[i]+=temp;
     }
     printf("\t\t=====================================\n");
-    printf("\t\tOK..!,<--Please Click Any Key-->\n");
+    printf("\t\t-------------------------------------\n");
+    printf("\t\t|    OK..! For goto Item Table.     |\n");
+    printf("\t\t|    <--Please Click Any Key-->     |\n");
+    printf("\t\t-------------------------------------\n");
     getch();
 }
 
 //default output
 int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]){
     system("CLS");
+    printf("\t\t-------====-----------------------====-------\n");
+    printf("\t\t|              VENDING MACHINE              |\n");
+    printf("\t\t-------====-----------------------====-------\n\n");
     printf("\t\t---------------------------------------------\n");
-    printf("\t\t|Invalid Input..! <--Please Click Any Key-->|\n");
+    printf("\t\t|      Invalid Input..! For goto Menu       |\n");
+    printf("\t\t|        <--Please Click Any Key-->         |\n");
     printf("\t\t---------------------------------------------\n");
     getch();
     system("CLS");
@@ -357,11 +413,15 @@ int defaultOutPut(char itemArray[20][20],int numberOfOneItem[20]){
 void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem,int numberOfOneItem[20],
              char itemArray[20][20]){
     int intPaymentMethod;
-    int discont;
+    float discont;
     int chooseItemIndex=chooseItem-1;
-    int sellPrice;
+    float sellPrice;
     float enterMoney;
     char paymentMehtod[2][20]={"Card Payment","cash Payment"};
+    printf("\t\t----====---====----\n");
+    printf("\t\t| VENDING MACHINE |\n");
+    printf("\t\t----====---====----\n");
+    printf("\t<<<<Discount For Card Payment!>>>>\n");
     printf("\t\t===================\n");
     printf("\t\t| PAYMENT METHOD  |\n");
     printf("\t\t===================\n");
@@ -370,7 +430,7 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
         printf("\t\t%d. %s\n",i+1,paymentMehtod[i]);
     }
     printf("\n\t\t===================\n\n");
-    printf("\t\tChoose Payment Method :");
+    printf("\t\tChoose<> :");
     scanf("%d",&intPaymentMethod);
 
     if(intPaymentMethod==1){
@@ -380,14 +440,20 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
     }
 
     system("cls");
+    printf("\t\t-------====----====-------\n");
+    printf("\t\t|     VENDING MACHINE    |\n");
+    printf("\t\t-------====----====-------\n\n");
     printf("\t\t==========================\n");
-    printf("\t\t|         PAY MONEY      |\n");
+    printf("\t\t|        PAY MONEY       |\n");
     printf("\t\t==========================\n");
     printf("\t\t==========================\n\n");
     printf("\t\tEnter Card Or Money :");
     scanf("%f",&enterMoney);
     printf("\n\t\t==========================\n");
-    printf("\t\tOK..!,<--Please Click Any Key-->\n");
+    printf("\t\t--------------------------\n");
+    printf("\t\t|  OK..! For goto Bill.  |\n");
+    printf("\t\t|<-Please Click Any Key->|\n");
+    printf("\t\t--------------------------\n");
     getch();
 
     if(enterMoney>=priceOfOneItem[chooseItemIndex]){
@@ -399,7 +465,11 @@ void buyItem(float priceOfOneItem[20],float buyItemTotalPrice[20],int chooseItem
                   sellPrice,enterMoney);
     }else{
         system("cls");
-        printf("Try agaen!\n");
+        printf("\t\t-------====----====-------\n");
+        printf("\t\t|     VENDING MACHINE    |\n");
+        printf("\t\t-------====----====-------\n\n");
+        printf("\t\t    Not enough money!     \n");
+        printf("\t\t       Try agaen!         \n");
     }
 }
 
@@ -414,6 +484,9 @@ void printBill(float priceOfOneItem[20],int chooseItemIndex,float discont,char i
                char paymentMehtod[2][20],int intPaymentMethod,float sellPrice,float enterMoney){
     system("cls");
     writeTheFile(itemArray,priceOfOneItem,chooseItemIndex,discont,sellPrice);
+    printf("\t\t-------====-------------====-------\n");
+    printf("\t\t|         VENDING MACHINE         |\n");
+    printf("\t\t-------====-------------====-------\n\n");
     printf("\t\t===================================\n");
     printf("\t\t|            YOUR BILL            |\n");
     printf("\t\t===================================\n");
@@ -436,6 +509,9 @@ void createBuyitemFile(){
     FILE *filePointer;
     filePointer=fopen("Buy_Item_List.txt","w");
     //write
+    fprintf(filePointer,"\t    -------====-------------------====-------\n");
+    fprintf(filePointer,"\t                 VENDING MACHINE             \n");
+    fprintf(filePointer,"\t    -------====-------------------====-------\n\n");
     fprintf(filePointer,"Item Name\tQTY\tItem Price\tDiscount\tSell_Price");
     fclose(filePointer);
 }
